@@ -1,5 +1,5 @@
 <?php 
-
+  include_one("controller/index.php");
 ?>
 
 <!DOCTYPE html>
