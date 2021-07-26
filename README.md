@@ -1,3 +1,3 @@
 # PRUEBA TÉCNICA UF1846
 
-Aplicación web donde puedes guardar tus enlaces favoritos
+Aplicación web donde puedes guardar tus enlaces favoritos.
