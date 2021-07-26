@@ -1,6 +1,6 @@
 <section class="flex-container login">
   <div class="form-container">
-    <h1>MI LLAVERO</h1>
+    <h1>MIS LINKS FAVORITOS</h1>
     <h2>Iniciar Sesión</h2>
     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="POST" autocomplete="off">
       <div class="form-group">
