@@ -25,6 +25,6 @@
     </div>
   </form>
   <div class="flex-container">
-    <?= create_cards($_SESSION["cards"], $edit) ?>
+    <?= create_cards($_SESSION["data"], $edit) ?>
   </div>
 </section>

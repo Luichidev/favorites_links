@@ -17,8 +17,11 @@
   if(!isset($_SESSION["auth"]))
     $_SESSION["auth"] = false;
 
-  if(!isset($_SESSION["cards"]))
-    $_SESSION["cards"] = [];
+  if(!isset($_SESSION["data"]))
+    $_SESSION["data"] = [];
+    
+  if(!isset($_SESSION["isAdmin"]))
+    $_SESSION["isAdmin"] = false;
 
   if($_SERVER["REQUEST_METHOD"] === "POST"){
 
@@ -43,8 +46,12 @@
               $_SESSION["iduser"] = $value["iduser"];
               $contents = ["IP" => $_SERVER["REMOTE_ADDR"], "Navegador" => $_SERVER["HTTP_USER_AGENT"], "Email" => $email, "Nombre" => $_SESSION["name"]];
               $message = "user logged in successfully";
-              $_SESSION["isAdmin"] =  $value["use_roll"] === "1" ? true : false;     strtoupper($_SESSION["name"]) === "ADMIN"? true : false;
-              $_SESSION["cards"] = getFavorites($_SESSION["iduser"]);
+              if($value["use_roll"] === "1"){
+                $_SESSION["isAdmin"] = true;
+                $_SESSION["data"] = getAllUsers();
+              } else 
+                $_SESSION["data"] = getFavorites($_SESSION["iduser"]);
+
               build_logs($contents,$message);
             } 
           }
@@ -70,7 +77,7 @@
         $err .= "<p class=\"noAuth\">*La URL no puede estar vacía 🚫</p>";
       if(empty($err)){
         updateFavorites($id, $url, $description, $checked);
-        $_SESSION["cards"] = getFavorites($_SESSION["iduser"]);
+        $_SESSION["data"] = getFavorites($_SESSION["iduser"]);
       }
     }
 
@@ -86,7 +93,7 @@
 
       if(empty($err)){
         insertFavorites($_SESSION["iduser"], $title, $url, $description, $checked);
-        $_SESSION["cards"] = getFavorites($_SESSION["iduser"]);
+        $_SESSION["data"] = getFavorites($_SESSION["iduser"]);
       }
 
     }
@@ -94,7 +101,7 @@
     if(isset($_POST["sendDel"])){
       $id = $_POST["idfav"];
       deleteFavorites($id);
-      $_SESSION["cards"] = getFavorites($_SESSION["iduser"]);
+      $_SESSION["data"] = getFavorites($_SESSION["iduser"]);
     }
 
     if(isset($_POST["sendRegister"])){
@@ -131,7 +138,7 @@
     if(isset($_GET["logout"])){
       session_destroy();
       $_SESSION["auth"] = false;
-      $_SESSION["cards"] = [];
+      $_SESSION["data"] = [];
     }
   }
 
