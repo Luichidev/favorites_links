@@ -7,7 +7,7 @@ function insertUser($name, $email, $pass, $roll){
 }
 
 function getAllUsers() {
-  $sql = "SELECT * FROM users;";
+  $sql = "SELECT use_name, use_email, COUNT(idfavorite) as use_nroFavorite FROM users JOIN favorites ON users.iduser = favorites.fav_iduser";
   $res = getData($sql);
   return !empty($res)? $res : [];
 }

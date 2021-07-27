@@ -2,9 +2,9 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  --mainColor: #A7342F;
-  --secondColor: #7D3C6D;
-  --TextColor: #2F4858;
+  --mainColor: #a7342f;
+  --secondColor: #7d3c6d;
+  --TextColor: #2f4858;
 }
 
 body {
@@ -136,7 +136,26 @@ p.noAuth {
 #form-send label {
   display: inline-block;
 }
-
+.table {
+  border-color: #e2e7eb;
+  border-radius: 3px;
+  background: #fff;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+th,
+td {
+  border-color: #e2e7eb;
+  padding: 10px 15px;
+  background: #fff;
+  text-align: center;
+}
+.table > tbody > tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
 /****************ESTILOS CARD*****************/
 .card {
   justify-content: space-between;

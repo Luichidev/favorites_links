@@ -142,3 +142,20 @@ function create_cards($array, $edit){
   }
   return $res;
 }
+//PROTOTIPO: String drawTable(Array $array)
+//DESCRIPCIÓN : Recibe un array y dibuja las filas 
+//              y columnas de una tabla
+function drawTable($array){
+  $res = "";
+  if(!empty($array)){
+    foreach ($array as $column) {
+
+      $res .= "<tr>" . PHP_EOL;
+      $res .= "<td>{$column["use_name"]}</td>";
+      $res .= "<td>{$column["use_email"]}</td>";
+      $res .= "<td>{$column["use_nroFavorite"]}</td>";
+      $res .= "</tr>" . PHP_EOL;
+    }
+  }
+  return $res;
+}
